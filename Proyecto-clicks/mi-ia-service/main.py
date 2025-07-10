@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://click-app-ai.onrender.com"],  # Cambia "*" por ["https://tu-frontend.com"] cuando estés en producción
+    allow_origins=[""],  # Cambia "*" por ["https://tu-frontend.com"] cuando estés en producción
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
