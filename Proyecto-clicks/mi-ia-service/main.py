@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Cambia "*" por ["https://tu-frontend.com"] cuando estés en producción
+    allow_origins=["*"],  # Cambiar en producción
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -17,8 +17,12 @@ predictor = ClickPredictor()
 
 class PredictRequest(BaseModel):
     days_ahead: int
+    current_clicks: int
 
 @app.post("/predict")
 def predict_clicks(data: PredictRequest):
-    prediction = predictor.predict(data.days_ahead)
+    print(f"Recibido en /predict: days_ahead={data.days_ahead}, current_clicks={data.current_clicks}")
+    days_ahead = data.days_ahead
+    current_clicks = data.current_clicks
+    prediction = predictor.predict(days_ahead, current_clicks)
     return {"predicted_clicks": prediction}
