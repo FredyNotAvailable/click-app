@@ -3,3 +3,8 @@ Dentro de AI
 .\venv\Scripts\activate
 
 uvicorn main:app --reload
+
+
+
+Packet.json
+    "start": "react-scripts start",
